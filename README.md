@@ -1,4 +1,4 @@
-# Data Cleansing
+# Diwali Sales Analysis
 
 ### The table of contents
 
@@ -11,15 +11,15 @@
 
 ### Project Overview
 
-This project aims to demonstrate the step by step data cleaning and EDA process on Diwali Sales Dataset. The aim is to provide a clean data to gain the accurate answers making buisness dicisions easy. 
+This project aims to demonstrate the step by step data cleaning and EDA process on Diwali Sales Dataset to uncover insights and patterns in consumer behavior during the Diwali festival. By analyzing sales data from various age catagories, this project seeks to identify trends that can inform future sales strategies and improve customer engagement.
 
 ### Data Source
 
-The dataset Diwali Sales Data used for the project. The dataset has been taken from a GitHub repositry with clients, product and sale revenue information. It has 11251 rows and 15 columns. 
+The dataset used for the project was taken from a GitHub repositry with clients, product and sale revenue information. It has 11251 rows and 15 columns. 
 
 ### Data Preparation
 
-The raw data (CSV) file was uploaded directly to the workbench without making any changes at the innitial stage. All the changes were done at the later stage (cleaning).
+The raw data (CSV) file was uploaded directly to the Jupytor Notebook without making any changes to perform Data Cleaning steps later. It had 11251 rows and 15 columns initially, which came down to 11239 rows and 13 columns after cleaning the data.
 
 
 ## Data Cleansing
@@ -27,7 +27,7 @@ The raw data (CSV) file was uploaded directly to the workbench without making an
 **1. Importing the dataset**
 
 ```python
-pd.read_csv(r"C:\Users\aslam\OneDrive\Desktop\Python\Data Analytics Panda\Diwali Sales Data.csv")
+df = pd.read_csv(r"C:\Users\aslam\OneDrive\Desktop\Python\Data Analytics Panda\Diwali Sales Data.csv")
 ```
 ![image](https://github.com/user-attachments/assets/aad56e48-4fea-47ff-9188-4cd0252423eb)
 
@@ -35,10 +35,10 @@ pd.read_csv(r"C:\Users\aslam\OneDrive\Desktop\Python\Data Analytics Panda\Diwali
 **2. Dropping unwantted columns "Status" & "unnamed1"**
 
 ```python
-df.drop(columns = 'Status')
+df = df.drop(columns = 'Status')
 ```
 ```python
-df.drop(columns = 'unnamed1')
+df = df.drop(columns = 'unnamed1')
 ```
 ![image](https://github.com/user-attachments/assets/2ac984eb-f995-4913-8aee-4842b89c46e5)
 
@@ -46,10 +46,10 @@ df.drop(columns = 'unnamed1')
 **3. Checking Null values and dropping them from the database**
 
 ```python
-df.isnull().sum()
+df = df.isnull().sum()
 ```
 ```python
-df.dropna()
+df = df.dropna()
 ```
 ![image](https://github.com/user-attachments/assets/fba7bff9-69f9-4226-beda-15268b7b80c3)
 
@@ -95,7 +95,7 @@ df.groupby('Occupation')['Amount'].sum().sort_values(ascending=False)
 ![image](https://github.com/user-attachments/assets/37559c18-edfa-4873-acff-f06523839ff4)
 
 
-**9. What are the top 5 peoduct catagory in terms of sale revenue?**
+**9. What are the top 5 peoduct catagories in terms of sale revenue?**
 
 ```python
 df.groupby('Product_Category').agg({'Amount': 'sum', 'Orders': 'sum'}).sort_values(by='Amount', ascending=False).head()
