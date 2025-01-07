@@ -1,6 +1,6 @@
 # Diwali Sales Analysis
 
-### The table of contents
+### The Table Of Contents
 
 - [Project Overview](#project-overview)
 - [Data Source](#data-source)
